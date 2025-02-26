@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>항공권 상세정보</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main/main_list_detail.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
+    
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="{{ url_for('main.main') }}">
+                <img src="{{ url_for('static', filename='images/rootair.jpg')}}"/>
+            </a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="{{ url_for('main.main') }}">예약</a></li>
+            <li><a href="{{ url_for('notices.notices_page') }}">공지사항</a></li>
+            <li><a href="{{ url_for('qna.qna_page') }}">문의사항</a></li>
+        </ul>
+        <ul class="navbar_member">
+            <li class="navbar_signup"><a href="">회원가입</a></li>
+            <li class="navbar_login"><a href="">로그인</a></li>
+        </ul>
+        <img class="navbar_togglebtn" src="{{ url_for('static', filename='images/topbar.jpg')}}" width="24" height="18"/>
+    </nav>
+</body>
+        </div>
+        
+        <div class="flight-container">
+            <button class="arrow-btn">◀</button>
+            <div class="flight-title">FLIGHT_01</div>
+            <button class="arrow-btn">▶</button>   
+        </div>
+    
+        <div class="flight-card">
+            
+            <div class="flight-header">
+                <h3>🛫 Departure Flight</h3>
+            </div>
+            
+            <div class="flight-details">
+                <!-- 출발 날짜 및 좌석 등급 -->
+                <div class="flight-date">
+                  <span id="departure-date" class="date">{{ flight.departure_time.strftime('%Y-%m-%d') }}</span>
+                  <span id="seat-class" class="seat-class">{{flight.seat_class}}</span>
+                </div>
+              
+                <!-- 출발 공항 ~ 도착 공항 -->
+                <div class="flight-route">
+                  <div class="airport">
+                    <span id="departure-airport" class="airport-name">{{flight.departure_airport}}</span>
+                    <span id="departure-code" class="airport-code">{{flight.departureCode}}</span>
+                  </div>
+                  <div class="flight-path">
+                    <span id="flight-dashed-line" class="dashed-line"></span>
+                    <div id="plane-container" class="plane-container">
+                      <span id="plane-icon" class="plane-icon">✈</span>
+                      <span id="flight-name" class="flight-name">{{flight.airplane_name}}</span>
+                    </div>
+                    <div id="single-line" class="single-line"></div>
+                  </div>
+                  <div class="airport">
+                    <span id="arrival-airport" class="airport-name">{{flight.arrival_airport}}</span>
+                    <span id="arrival-code" class="airport-code">{{flight.arrivalCode}}</span>
+                  </div>
+                </div>
+                    
+                <!-- 출발 시간 ~ 도착 시간 -->
+                <div class="flight-time">
+                  <span id="departure-time" class="departure-time">{{ flight.departure_time.strftime('%H:%M') }}</span>
+                  <div id="time-path" class="time-path">
+                    <div id="time-dashed-line" class="dashed-line"></div>
+                    <!-- 화살표를 위한 별도 요소 -->
+                    <div id="time-arrow" class="arrow"></div>
+                  </div>
+                  <span id="arrival-time" class="arrival-time">{{ flight.arrival_time.strftime('%H:%M') }}</span>
+                </div>
+              </div>
+              
+    
+        
+            </div>
+        </div>
+        
+        
+            </div>
+        </div>
+        
+            </div>
+        </div>
+        
+        
+                    
+                </div>
+            </div>
+        </div>  
+        
+            </div>
+    
+        </div>
+    
+        <h3 class="passenger-title">탑승객 정보 입력</h3>
+
+        <form action="{{ url_for('main.book_flight') }}" method="post">
+            <!-- 항공편 ID (필수) -->
+            <input type="hidden" name="flight_id" value="{{ flight.flight_id }}">
+        
+            <!-- 🚀 탑승객 수를 저장하는 숨겨진 input -->
+            <input type="hidden" id="passengerCount" name="passenger_count" value="{{ passenger_count }}">
+        
+            <div class="passenger-form">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>여권 영문명</th>
+                            <th>성별</th>
+                            <th>생년월일(8자리)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="passengerTableBody">
+                        <!-- 🚀 JavaScript가 여기에 동적으로 생성할 것 -->
+                    </tbody>
+                </table>
+        
+                <!-- 예약 제출 버튼 -->
+                <div class="submit-container">
+                    <button type="submit" class="submit-btn">제출</button>
+                </div>
+            </div>
+        </form>
+            <script src="{{ url_for('static', filename='js/main/main_list_detail.js')}}"></script>
+        </body>
+        </html>

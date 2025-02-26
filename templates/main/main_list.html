@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Select</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main/main_list.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_logo">
+            <a href="{{ url_for('main.main') }}">
+                <img src="{{url_for('static', filename='images/rootair.jpg')}}"/>
+            </a>
+        </div>
+        <ul class="navbar_menu">
+            <li><a href="{{ url_for('main.main') }}">예약</a></li>
+            <li><a href="{{ url_for('notices.notices_page') }}">공지사항</a></li>
+            <li><a href="{{ url_for('qna.qna_page') }}">문의사항</a></li>
+        </ul>
+        <ul class="navbar_member">
+            <li class="navbar_signup"><a href="">회원가입</a></li>
+            <li class="navbar_login"><a href="">로그인</a></li>
+        </ul>
+        <img class="navbar_togglebtn" src="{{url_for('static', filename='images/topbar.jpg')}}" width="24" height="18"/>
+    </nav>
+    <script>
+        const togglebtn = document.querySelector('.navbar_togglebtn');
+        const menu = document.querySelector('.navbar_menu');
+        const member = document.querySelector('.navbar_member');
+
+        togglebtn.addEventListener('click', ()=>{
+            menu.classList.toggle('active');
+            member.classList.toggle('active');
+        });
+    </script>
+    <div class="flight-container">
+        <div class="flight-header">
+            <button class="arrow-btn left">◀</button>
+            <h2 id="flightTitle">FLIGHT_01</h2>
+            <button class="arrow-btn right">▶</button>
+        </div>
+
+        <!-- 항공권 목록 -->
+        <div class="flight-list">
+            <!-- JavaScript에서 항공권 동적 생성 -->
+        </div>
+
+        <!-- 제출 버튼 -->
+        <button class="submit-btn">제출</button>
+    </div>
+    <script>
+        const flights = JSON.parse('{{ results | tojson | safe }}');  // 서버에서 받은 데이터
+    </script>
+    <script src="{{ url_for('static', filename='js/main/main_list.js') }}"></script>
+</body>
+</html>

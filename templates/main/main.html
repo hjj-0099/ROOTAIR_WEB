@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin_management</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main/main.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script>
+        const togglebtn = document.querySelector('.navbar_togglebtn');
+        const menu = document.querySelector('.navbar_menu');
+        const member = document.querySelector('.navbar_member');
+
+        togglebtn.addEventListener('click', ()=>{
+            menu.classList.toggle('active');
+            member.classList.toggle('active');
+        });
+    </script>
+</head>
+<script src="{{url_for('static',filename='js/main/main.js')}}" defer></script>
+
+<body>
+   <nav class="navbar">
+       <div class="navbar_logo">
+           <a href="{{ url_for('main.main') }}">
+               <img src="{{url_for('static',filename='images/rootair.jpg')}}"/>
+           </a>
+       </div>
+       <ul class="navbar_menu">
+        <li><a href="{{ url_for('main.main') }}">예약</a></li>
+        <li><a href="{{ url_for('notices.notices_page') }}">공지사항</a></li>
+        <li><a href="{{ url_for('qna.qna_page') }}">문의사항</a></li>
+       </ul>
+       <ul class="navbar_member">
+           <li class="navbar_signup"><a href="">회원가입</a></li>
+           <li class="navbar_login"><a href="">로그인</a></li>
+       </ul>
+       <img class="navbar_togglebtn" src="{{url_for('static',filename='images/topbar.jpg')}}" width="24" height="18"/>
+   </nav>
+
+</body>
+
+<div class="intro">
+   <h1 style="font-size: 31pt;">Root Air</h1>
+   <p style="font-size: 18pt;">루트에어와 함께, 여행이 더 특별해집니다.</p>
+</div>
+<ke-quick-service-cont _ngcontent-frg-c6="">
+    <ke-quick-service-pres _nghost-frg-c78="">
+       <div _ngcontent-frg-c78="" id="main-booking-widget" class="booking-widget">
+          <div _ngcontent-frg-c78="" class="booking-widget__inner">
+             <h2 _ngcontent-frg-c78="" id="booking-widget" class="_hidden">빠른 예매</h2>
+            
+             <ul role="tablist" aria-labelledby="booking-widget" aria-orientation="horizontal" class="booking-widget__list" style="display: flex; justify-content: flex-start; gap: 0px; align-items: flex-end; margin-top: 20px;">
+               <li role="presentation" class="booking-widget__itm -active" style="margin-top: -10px;">
+                   <button type="button" role="tab" id="tab_0" aria-controls="panel_0" class="booking-widget__button" aria-selected="true" tabindex="0">
+                       <span class="booking-widget__txt">항공권 예매</span>
+                   </button>
+               </li>
+               <li role="presentation" class="booking-widget__itm" id="reservationList" style="margin-top: -10px;z-index: 10;">
+                   <button type="button" id="addReservationButton" class="booking-widget__button" style="background-color: #555; color: white; border-radius: 12px;z-index: 10;">
+                       <span class="booking-widget__txt">+</span>
+                   </button>
+               </li>
+           </ul>
+               
+
+             <div _ngcontent-frg-c78="" role="tabpanel" id="panel_0" aria-labelledby="tab_0" class="booking-widget__panel -active" style="position: relative; top: 2px;">
+                <ke-main-quick-booking _ngcontent-frg-c78="" _nghost-frg-c55="">
+                   <div _ngcontent-frg-c55="" class="quickbookings">
+                     <div class="booking-widget__side-wrap" style="display: flex;"> 
+                        <div class="booking-widget__tabs">
+                           <span class="booking-widget__item-press" style="
+                           display: inline-flex; 
+                           align-items: center; 
+                           justify-content: center; 
+                           padding: .2rem 1.8rem; 
+                           border-radius: 25px; 
+                           background-color: #555; 
+                           color: #fff; 
+                           font-weight: bold; 
+                           font-size: 1.6rem; 
+                           text-align: center; 
+                           transform: translateY(-5px);
+                           vertical-align: middle; 
+                           height: 3rem; /* 높이 조정 */
+                           line-height: normal;">
+                           예매유형
+                       </span>
+                        </div>
+                     </div>
+                      <div _ngcontent-frg-c55="" id="panelNormalTrip" class="quickbookings__panel -active">
+                         <ke-main-quick-booking-ow-rt _ngcontent-frg-c55="" _nghost-frg-c54="" class="ng-star-inserted">
+                            
+                            
+                            <div _ngcontent-frg-c54="" class="quickbookings__aligner">
+                               <div _ngcontent-frg-c54="" class="quickbookings__separate -itinerary">
+                                  <ke-airport-selector _ngcontent-frg-c54="" _nghost-frg-c42="">
+                                     <!----><!----><!---->
+                                     <div _ngcontent-frg-c42="" class="quickbookings__aligner-inner ng-star-inserted">
+                                        <!-- 출발지 버튼 -->
+                                       <button _ngcontent-frg-c42="" type="button" id="departureBtn29a913db9a6a5790649931aea921e6af" 
+                                       class="quickbookings__location _has-dialog -from ng-star-inserted">
+                                          <span _ngcontent-frg-c42="" class="_hidden ng-star-inserted">출발지&nbsp;</span>
+                                          <span _ngcontent-frg-c42="" class="quickbookings__code">FROM</span>
+                                          <span _ngcontent-frg-c42="" class="quickbookings__airport ng-star-inserted">&nbsp;출발지</span>
+                                       </button>
+
+                                       <!-- 출발지 모달 창 -->
+                                       <div id="departureModal" class="modal hidden">
+                                          <div class="modal-content">
+                                              <span class="close" id="closeDepartureModal">&times;</span>
+                                              <h2>출발지 검색</h2>
+                                      
+                                              <input type="text" id="departureSearchInput" placeholder="출발지 입력" />
+                                              <div id="departureResults" class="departure-results"></div>
+                                          </div>
+                                                                        
+                                       </div>
+                                       
+                                        <!-- 도착지 버튼 -->
+                                       <button _ngcontent-frg-c42="" type="button" id="destinationBtn29a913db9a6a5790649931aea921e6af" 
+                                       class="quickbookings__location _has-dialog -to ng-star-inserted">
+                                          <span _ngcontent-frg-c42="" class="_hidden ng-star-inserted">도착지&nbsp;</span>
+                                          <span _ngcontent-frg-c42="" class="quickbookings__code">TO</span>
+                                          <span _ngcontent-frg-c42="" class="quickbookings__airport ng-star-inserted">&nbsp;도착지</span>
+                                       </button>
+
+                                       <!-- 도착지 모달 창 -->
+                                       <div id="arrivalModal" class="modal hidden">
+                                          <div class="modal-content">
+                                             <span class="close" id="closeArrivalModal">&times;</span>
+                                             <h2>도착지 검색</h2>
+                                             
+                                             <input type="text" id="arrivalSearchInput" placeholder="도착지 입력" />
+                                             <div id="arrivalResults" class="arrival"></div>
+                                         </div>
+                                                                       
+                                      </div>
+
+                                        <button _ngcontent-frg-c42="" type="button" class="quickbookings__swap ng-star-inserted" style="border: none; background: none; padding: 0; cursor: pointer;">
+                                          <img src="{{url_for('static',filename='images/switch.png')}}" alt="출발지와 도착지 바꾸기" style="width: 40px; height: auto; display: block;">
+                                      </button>
+                                      
+
+                                        <!----><!---->   
+                                     </div>
+                                     <!----><!----><!----><!----><!----><!----><!----><!----><!---->
+                                  </ke-airport-selector>
+                                  <div _ngcontent-frg-c54="" class="booking-widget__message message">
+                                     <!---->
+                                     <div _ngcontent-frg-c54="" aria-live="assertive">
+                                        <!---->
+                                     </div>
+                                  </div>
+                               </div>
+                               <div _ngcontent-frg-c54="" class="quickbookings__separate -date" style="text-align:right;">
+                                  <p _ngcontent-frg-c54="" class="quickbookings__label label _mo-hidden">출발일&nbsp;</p>
+                                  <div _ngcontent-frg-c54="" class="forms" style="text-align:right;">
+                                    <button id="date29a913db9a6a5790649931aea921e6af" class="quickbookings__datepicker" style="text-align:right;">
+                                       <span class="quickbookings__date"  style="text-align:right;">
+                                           <span class="departure-date -selected">가는날을 입력해주세요</span>
+                                          
+                                       </span>
+                                   </button>
+                               
+                                   <div id="dateModal" class="modal hidden">
+                                       <div class="modal-content">
+                                           <span class="close" id="closeDateModal">&times;</span>
+                                           <h2>날짜 선택</h2>
+                               
+                                           <div class="calendar-navigation">
+                                               <button id="prevMonth">◀</button>
+                                               <span id="currentMonth"></span>
+                                               <button id="nextMonth">▶</button>
+                                           </div>
+                                                                              
+                               
+                                           <div class="calendar">
+                                               <div class="calendar-month" id="calendar1">
+                                                <div class="calendar-week-header" style="display: flex; justify-content: space-between; gap: 10px; padding: 5px 0;">
+                                                   <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+                                               </div>
+                                               <div class="calendar-days"></div>
+                                               </div>
+                                               <div class="calendar-month" id="calendar2">
+                                                <div class="calendar-week-header" style="display: flex; justify-content: space-between; gap: 10px; padding: 5px 0;">
+                                                   <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+                                               </div>
+                                                   <div class="calendar-days"></div>
+                                               </div>                                             
+                                           </div>
+                                           <div class="calendar-footer">
+            <button class="calendar-confirm-btn" id="calendarConfirmBtn">확인</button>
+        </div>
+                                       </div>
+                                   </div>
+                                  </div>
+                                  <div _ngcontent-frg-c54="" aria-hidden="true" id="date-controls29a913db9a6a5790649931aea921e6af"></div>
+                               </div>
+                               <div class="quickbookings__separate -passenger">
+                                 <p class="quickbookings__label label">승객 선택</p>
+                                 <div class="forms">
+                                     <button type="button" aria-expanded="false" class="quickbookings__passenger" id="passengerBtn" aria-controls="passengerModal">
+                                         <span class="_hidden">탑승객</span>
+                                         <span class="quickbookings__select-data" id="passengerCount">성인 1명</span>
+                                     </button>
+                                 </div>
+                             </div>                             
+                             <div class="modal hidden" id="passengerModal">
+                                 <div class="modal-content">
+                                     <span class="close" id="closePassengerModal">&times;</span>
+                                     <h2>승객 선택</h2>
+                                     <div class="passenger-select">
+                                         <span class="passenger-label" style="font-size:large; font-weight: bold;">성인</span>
+                                         <div class="counter">
+                                             <button id="decrement">-</button>
+                                             <span id="count">1</span>
+                                             <button id="increment">+</button>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="quickbookings__separate -seats">
+                              <p class="quickbookings__label label">좌석 등급</p>
+                              <div class="forms">
+                                  <button type="button" aria-expanded="false" class="quickbookings__seatclass" id="seatClassBtn" aria-controls="seatClassModal">
+                                      <span class="_hidden">좌석 등급</span>
+                                      <span class="quickbookings__select-data" id="seatClassDisplay">이코노미</span>
+                                  </button>
+                              </div>
+                          </div>
+                          
+                          <div class="modal hidden" id="seatClassModal">
+                              <div class="modal-content">
+                                  <span class="close" id="closeSeatClassModal">&times;</span>
+                                  <h2>좌석 등급 선택</h2>
+                                  <div class="seat-options">
+                                      <button class="seat-option" data-seat="이코노미">이코노미</button>
+                                      <button class="seat-option" data-seat="비즈니스">비즈니스</button>
+                                      <button class="seat-option" data-seat="퍼스트">퍼스트</button>
+                                  </div>
+                              </div>
+                          </div>
+                              <!---->
+                              <div _ngcontent-frg-c54="" class="quickbookings__separate -search"><button _ngcontent-frg-c54="" type="button" data-click-area="Main-Booking" data-click-name="Book Flights_Search" id="quickbookingOnSearch" class="booking-widget__find" style="background-color: #555;">항공편 검색</button></div>
+                           </div>
+                           <div _ngcontent-frg-c54="" class="quickbookings__text _mo-hidden">
+                              <!---->
+                           </div>
+                            <ke-common-airport-layer _ngcontent-frg-c54="" _nghost-frg-c41="">
+                               <!----><!---->
+                            </ke-common-airport-layer>
+                            <ke-schedule-date-calendar _ngcontent-frg-c54="" showcalendarfarebtn="true" _nghost-frg-c44="">
+                               <!---->
+                            </ke-schedule-date-calendar>
+                            <!----><!----><!---->
+                            <ke-booking-airport-alert-message _ngcontent-frg-c54="" _nghost-frg-c52="">
+                               <!---->
+                            </ke-booking-airport-alert-message>
+                            <ke-booking-promotion-notice-message _ngcontent-frg-c54="" _nghost-frg-c53="">
+                               <!---->
+                            </ke-booking-promotion-notice-message>
+                            <!---->
+                         </ke-main-quick-booking-ow-rt>
+                         <!---->
+                      </div>
+                      <div _ngcontent-frg-c55="" id="panelBonusTrip" class="quickbookings__panel">
+                         <!---->
+                      </div>
+                   </div>
+                </ke-main-quick-booking>
+             </div>
+             <div _ngcontent-frg-c78="" role="tabpanel" id="panel_1" class="booking-widget__panel" aria-labelledby="mainTabResvNoLogin" tabindex="-1">
+                <!---->
+             </div>
+             <div _ngcontent-frg-c78="" role="tabpanel" id="panel_2" class="booking-widget__panel" aria-labelledby="mainTabCheckinNoLogin" tabindex="-1">
+                <!---->
+             </div>
+             <div _ngcontent-frg-c78="" role="tabpanel" id="panel_3" aria-labelledby="tab_3" class="booking-widget__panel" tabindex="-1">
+                <!---->
+             </div>
+          </div>
+          <div _ngcontent-frg-c78="" class="booking-widget__dimed" style="display: none;"></div>
+       </div>
+    </ke-quick-service-pres>
+ </ke-quick-service-cont>
