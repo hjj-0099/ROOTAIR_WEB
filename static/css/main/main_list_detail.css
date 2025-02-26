@@ -1,0 +1,384 @@
+body {
+    margin:0;
+    font-family: "Noto Sans KR";
+    font-weight: 400;
+    font-style: normal;
+}
+em {
+    font-style: normal;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+}
+.navbar_logo{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar_logo img {
+    margin-left: 150px;
+    width: 210px;
+    height: auto;
+}
+.navbar_menu {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    font-size: 27px;
+    font-weight: 500;
+    gap: 100px;
+}
+.navbar_menu li {
+    padding: 8px 20px;
+}
+.navbar_menu li:hover {
+    background-color: #e3dede;
+    border-radius: 10px;
+}
+
+.navbar_member {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+.navbar_member li {
+    padding: 8px 14px;
+}
+.navbar_member li:hover {
+    background-color: #e3dede;
+    border-radius: 10px;
+}
+.navbar_signup {
+    margin-top: 13px;
+    margin-right: 10px;
+}
+.navbar_login {
+    font-size: 20px;
+    margin-top: 8px;
+    margin-right: 50px;
+    font-weight: 500;
+    border: 2px solid #000;
+    border-radius: 10px;
+}
+.navbar_togglebtn {
+    display: none;
+    position:absolute;
+    top: 32px;
+    right: 32px;
+    font-size: 24px;    
+}
+
+@media screen and (max-width: 1040px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar_menu {
+        font-size:16px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 0px
+    }
+    .navbar_menu li {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar_member {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .navbar_member li {
+        width: 100%;
+        text-align: center;
+    }
+    .navbar_togglebtn {
+        display: block;
+    }
+    .navbar_menu.active,
+    .navbar_member.active {
+        display: flex;
+    }
+    .navbar_signup {
+        margin-left: 10px;
+    }
+    .navbar_login {
+        margin-left: 50px;
+        font-size:16px;
+        border: none;
+        border-radius: none;
+    }
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.flight-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #cfe2ff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 1230px;
+
+}
+
+.flight-title {
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+    .flight-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 16px;
+        box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        width: 100%;
+        max-width: 1220px;   
+        margin:auto;
+    }
+    
+    .flight-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+    
+    .flight-header h3 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+   /* 출발 날짜 스타일 (공항 정보 아래 정렬) */
+/* 전체 컨테이너를 한 줄 정렬 */
+.flight-details {
+    display: flex;
+    justify-content: space-between; /* 요소들 간 균형 있게 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    gap:27px;
+    padding: 10px 15px;
+}
+
+/* 출발 날짜 */
+.flight-date {
+    display: flex;
+    flex-direction: column; /* 내부 요소를 세로로 배치 */
+    align-items: center;
+}
+
+.flight-date span {
+    display: block; /* 자동 줄바꿈 */
+    text-align: center;
+}
+
+/* 출발 날짜 스타일 */
+
+.departure-date {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+/* 좌석 등급 스타일 */
+.seat-class {
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+    margin-top: 5px;
+    
+}
+
+
+/* 공항 정보 */
+.flight-route {
+    display: flex;               /* 가로로 정렬 */
+    align-items: center;         /* 세로 중앙 정렬 */
+    justify-content: center;     /* 가운데 정렬 */
+    gap: 20px;                   /* 공항 사이 간격 */
+}
+
+/* 공항 정보 (출발/도착) */
+.airport {
+    display: flex;
+    font-size: 30px;
+    flex-direction: column;      /* 위에는 도시, 아래에는 코드 */
+    align-items: center;
+    text-align: center;
+}
+
+/* 비행 경로 (점선, 비행기, 실선) */
+.flight-path {
+    display: flex;
+    align-items: center;
+    gap: 10px;                   /* 선과 비행기 사이 간격 */
+}
+
+/* 비행기와 항공기명을 세로로 쌓기 */
+.plane-container {
+    display: flex;
+    flex-direction: column;      /* 비행기 아이콘 위, 항공기명 아래 */
+    align-items: center;
+}
+
+/* 점선 */
+.dashed-line {
+    border-top: 2px dashed #666;
+    width: 50px;                /* 길이 조절 */
+}
+
+/* 실선 */
+.single-line {
+    width: 50px; /* 선의 전체 길이 */
+    border-top: 2px solid #666; /* 기본 선 */
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* 화살표를 선과 완전히 일치하게 배치 */
+
+
+
+/* 비행기 아이콘 */
+.plane-icon {
+    font-size: 20px;
+    margin-bottom: 1px;         /* 아이콘과 항공기명 사이 간격 */
+}
+
+/* 항공기명 */
+.flight-name {
+    font-size: 20px;
+    color: #666;
+    font-weight: bold;
+}
+
+/* 출발 시간 ~ 도착 시간 한 줄 정렬 */
+.flight-time {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #333;
+    margin-right:25px;
+}
+/* 시간 경로를 한 줄로 정렬 */
+.time-path {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px; /* 선의 길이를 조정 */
+    gap: 5px;
+}
+
+/* 점선 스타일 */
+.time-path .dashed-line {
+    border-top: 2px dashed #666;
+    flex-grow: 1;  /* 선이 자동 확장 */
+}
+
+/* 화살표(삼각형) 스타일 */
+.time-path .arrow {
+    /* 실제로 너비/높이가 없는 0x0 박스에서 border를 이용해 삼각형 생성 */
+    width: 0;
+    height: 0;
+
+    /* 오른쪽을 향하는 화살표를 만들기 위해 왼쪽 테두리에 색상을 지정 */
+    border-left: 10px solid #666;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+
+.arrow-btn {
+        background: none;
+        border: none;
+        font-size: 40px;
+        cursor: pointer;
+        margin: 0 550px;
+    }
+
+
+
+
+.flight-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+}
+
+.transit {
+    color: red;
+    font-weight: bold;
+}
+
+.passenger-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 150px;
+    margin-top: 50px;
+}
+
+.passenger-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 20px auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+input, select {
+    width: 90%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.submit-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-left: 1130px;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}
